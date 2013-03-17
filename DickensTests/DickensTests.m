@@ -27,7 +27,7 @@
 
 - (void)testPolish
 {
-    NSString *unpolishedString = @"This string contains \"dumb quotes.\"";
+    NSString *unpolishedString = @"This string contains \"dumb double quotes.\"";
 
     STAssertTrue([unpolishedString.polishedString isEqualToString:@"This string contains “dumb quotes.”"], @"Polish failed.");
 }
