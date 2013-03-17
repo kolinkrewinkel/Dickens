@@ -9,6 +9,9 @@
 #import "DickensTests.h"
 #import "NSString+KKPolishing.h"
 
+NSString *const DickensTestMessyString = @"This string contains \"dumb double quotes.\" As well, it has 'dumb single quotes.'";
+NSString *const DickensTestPolishedString = @"This string contains “dumb double quotes.” As well, it has ‘dumb single quotes.’";
+
 @implementation DickensTests
 
 - (void)setUp
@@ -27,9 +30,7 @@
 
 - (void)testPolish
 {
-    NSString *unpolishedString = @"This string contains \"dumb double quotes.\"";
-
-    STAssertTrue([unpolishedString.polishedString isEqualToString:@"This string contains “dumb quotes.”"], @"Polish failed.");
+    STAssertTrue([DickensTestMessyString.polishedString isEqualToString:DickensTestPolishedString], @"Polish failed.");
 }
 
 @end

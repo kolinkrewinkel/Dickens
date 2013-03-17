@@ -8,10 +8,17 @@
 
 #import "NSString+KKPolishing.h"
 
-NSString * const KKPolishLeftDoubleQuote = @"“";
-NSString * const KKPolishRightDoubleQuote = @"”";
+#pragma mark - Double Quotes
 
+NSString * const KKCharacterLeftDoubleQuotationMark = @"\u201c";
+NSString * const KKCharacterRightDoubleQuotationMark = @"\u201d";
 NSString * const KKPolishDoubleQuoteExpression = @"\".*\"";
+
+#pragma mark - Single Quotes
+
+NSString * const KKCharacterLeftSingleQuotationMark = @"\u2018";
+NSString * const KKCharacterRightSingleQuotationMark = @"\u2019";
+NSString * const KKPolishSingleQuoteExpression = @"'.*'";
 
 @implementation NSString (KKPolishing)
 
@@ -29,11 +36,18 @@ NSString * const KKPolishDoubleQuoteExpression = @"\".*\"";
     // Make a copy to make mutating it easier.
     NSMutableString *grammaticallyPolishedString = self.mutableCopy;
 
-#pragma mark • Double Quotes
-    NSRegularExpression *expression = [[NSRegularExpression alloc] initWithPattern:KKPolishDoubleQuoteExpression options:NSRegularExpressionDotMatchesLineSeparators error:nil];
-    for (NSTextCheckingResult *quoteResult in [expression matchesInString:self options:NSMatchingReportCompletion range:self.endToEndRange]) {
-        NSString *content = [grammaticallyPolishedString substringWithRange:NSMakeRange(quoteResult.range.location + 1, quoteResult.range.length - 2)];
-        [grammaticallyPolishedString replaceCharactersInRange:quoteResult.range withString:[self _wrapString:content withOpeningString:KKPolishLeftDoubleQuote closingString:KKPolishRightDoubleQuote]];
+    // Single quotes.
+    NSRegularExpression *singleQuoteExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishSingleQuoteExpression options:NSRegularExpressionDotMatchesLineSeparators error:nil]; // Dot matches line seperators to include quotes which include linebreaks.
+    for (NSTextCheckingResult *quoteResult in [singleQuoteExpression matchesInString:self options:NSMatchingReportCompletion range:self.endToEndRange]) {
+        NSString *content = [grammaticallyPolishedString substringWithRange:NSMakeRange(quoteResult.range.location + 1, quoteResult.range.length - 2)]; // Quoted content
+        [grammaticallyPolishedString replaceCharactersInRange:quoteResult.range withString:[self _wrapString:content withOpeningString:KKCharacterLeftSingleQuotationMark closingString:KKCharacterRightSingleQuotationMark]]; // Replace dumb single quotes.
+    }
+
+    // Double quotes.
+    NSRegularExpression *doubleQuoteExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishDoubleQuoteExpression options:NSRegularExpressionDotMatchesLineSeparators error:nil]; // Dot matches line seperators to include quotes which include linebreaks.
+    for (NSTextCheckingResult *quoteResult in [doubleQuoteExpression matchesInString:self options:NSMatchingReportCompletion range:self.endToEndRange]) {
+        NSString *content = [grammaticallyPolishedString substringWithRange:NSMakeRange(quoteResult.range.location + 1, quoteResult.range.length - 2)]; // Quoted content
+        [grammaticallyPolishedString replaceCharactersInRange:quoteResult.range withString:[self _wrapString:content withOpeningString:KKCharacterLeftDoubleQuotationMark closingString:KKCharacterRightDoubleQuotationMark]]; // Replace dumb quotes.
     }
 
     return [[NSString alloc] initWithString:grammaticallyPolishedString];

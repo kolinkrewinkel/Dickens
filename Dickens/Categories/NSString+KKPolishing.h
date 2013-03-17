@@ -8,8 +8,11 @@
 
 typedef void (^KKPolishingStringCompletionBlock)(NSString *polishedString);
 
-extern NSString *const KKPolishLeftDoubleQuote;
-extern NSString *const KKPolishRightDoubleQuote;
+extern NSString *const KKCharacterLeftDoubleQuotationMark;
+extern NSString *const KKCharacterRightDoubleQuotationMark;
+
+extern NSString *const KKCharacterLeftSingleQuotationMark;
+extern NSString *const KKCharacterRightSingleQuotationMark;
 
 @interface NSString (KKPolishing)
 
