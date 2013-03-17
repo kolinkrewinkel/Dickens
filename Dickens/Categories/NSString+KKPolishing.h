@@ -6,6 +6,11 @@
 //  Copyright (c) 2013 Handcrafted. All rights reserved.
 //
 
+typedef void (^KKPolishingStringCompletionBlock)(NSString *polishedString);
+
+extern NSString *const KKPolishLeftDoubleQuote;
+extern NSString *const KKPolishRightDoubleQuote;
+
 @interface NSString (KKPolishing)
 
 #pragma mark - These should be in NSString by default.
@@ -14,6 +19,6 @@
 
 #pragma mark - Polish Methods
 
-- (NSString *)grammaticallyPolishedString;
+- (void)polishString:(KKPolishingStringCompletionBlock)completionHandler;
 
 @end

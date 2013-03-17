@@ -29,7 +29,10 @@
 {
     NSString *unpolishedString = @"This string contains \"dumb quotes.\"";
 
-    STAssertEquals([unpolishedString grammaticallyPolishedString], @"This string contains “dumb quotes.”", @"Polish failed.");
+    [unpolishedString polishString:^(NSString *polishedString) {
+        NSLog(@"Polished string: %@", polishedString);
+        STAssertTrue([polishedString isEqualToString:@"This string contains “dumb quotes.”"], @"Polish failed.");
+    }];
 }
 
 @end
