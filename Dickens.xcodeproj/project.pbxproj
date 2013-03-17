@@ -15,6 +15,7 @@
 		3302AC6116F662890050BFF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3302AC5F16F662890050BFF1 /* InfoPlist.strings */; };
 		3302AC6416F662890050BFF1 /* DickensTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC6316F662890050BFF1 /* DickensTests.m */; };
 		3302AC6F16F664F80050BFF1 /* KKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC6E16F664F80050BFF1 /* KKTextView.m */; };
+		3302AC7416F6666A0050BFF1 /* NSString+KKPolishing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC7316F6666A0050BFF1 /* NSString+KKPolishing.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		3302AC6316F662890050BFF1 /* DickensTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DickensTests.m; sourceTree = "<group>"; };
 		3302AC6D16F664F80050BFF1 /* KKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKTextView.h; path = Subclasses/KKTextView.h; sourceTree = "<group>"; };
 		3302AC6E16F664F80050BFF1 /* KKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKTextView.m; path = Subclasses/KKTextView.m; sourceTree = "<group>"; };
+		3302AC7216F6666A0050BFF1 /* NSString+KKPolishing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+KKPolishing.h"; path = "Categories/NSString+KKPolishing.h"; sourceTree = "<group>"; };
+		3302AC7316F6666A0050BFF1 /* NSString+KKPolishing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+KKPolishing.m"; path = "Categories/NSString+KKPolishing.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,8 @@
 		3302AC7116F6651B0050BFF1 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				3302AC7216F6666A0050BFF1 /* NSString+KKPolishing.h */,
+				3302AC7316F6666A0050BFF1 /* NSString+KKPolishing.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3302AC6F16F664F80050BFF1 /* KKTextView.m in Sources */,
+				3302AC7416F6666A0050BFF1 /* NSString+KKPolishing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
