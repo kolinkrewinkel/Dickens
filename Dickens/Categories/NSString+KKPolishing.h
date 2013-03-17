@@ -8,6 +8,10 @@
 
 @interface NSString (KKPolishing)
 
+#pragma mark - These should be in NSString by default.
+
+- (NSRange)endToEndRange;
+
 #pragma mark - Polish Methods
 
 - (NSString *)grammaticallyPolishedString;

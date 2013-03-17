@@ -7,6 +7,7 @@
 //
 
 #import "DickensTests.h"
+#import "NSString+KKPolishing.h"
 
 @implementation DickensTests
 
@@ -24,9 +25,11 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testPolish
 {
-    STFail(@"Unit tests are not implemented yet in DickensTests");
+    NSString *unpolishedString = @"This string contains \"dumb quotes.\"";
+
+    STAssertEquals([unpolishedString grammaticallyPolishedString], @"This string contains “dumb quotes.”", @"Polish failed.");
 }
 
 @end
