@@ -8,14 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3302AC4616F662880050BFF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3302AC4516F662880050BFF1 /* Foundation.framework */; };
-		3302AC4B16F662880050BFF1 /* Dickens.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3302AC4A16F662880050BFF1 /* Dickens.h */; };
-		3302AC4D16F662880050BFF1 /* Dickens.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC4C16F662880050BFF1 /* Dickens.m */; };
 		3302AC5516F662890050BFF1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3302AC5416F662890050BFF1 /* SenTestingKit.framework */; };
 		3302AC5716F662890050BFF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3302AC5616F662890050BFF1 /* UIKit.framework */; };
 		3302AC5816F662890050BFF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3302AC4516F662880050BFF1 /* Foundation.framework */; };
 		3302AC5B16F662890050BFF1 /* libDickens.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3302AC4216F662880050BFF1 /* libDickens.a */; };
 		3302AC6116F662890050BFF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3302AC5F16F662890050BFF1 /* InfoPlist.strings */; };
 		3302AC6416F662890050BFF1 /* DickensTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC6316F662890050BFF1 /* DickensTests.m */; };
+		3302AC6F16F664F80050BFF1 /* KKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC6E16F664F80050BFF1 /* KKTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +34,6 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				3302AC4B16F662880050BFF1 /* Dickens.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,8 +43,6 @@
 		3302AC4216F662880050BFF1 /* libDickens.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDickens.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3302AC4516F662880050BFF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3302AC4916F662880050BFF1 /* Dickens-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dickens-Prefix.pch"; sourceTree = "<group>"; };
-		3302AC4A16F662880050BFF1 /* Dickens.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dickens.h; sourceTree = "<group>"; };
-		3302AC4C16F662880050BFF1 /* Dickens.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dickens.m; sourceTree = "<group>"; };
 		3302AC5316F662890050BFF1 /* DickensTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DickensTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3302AC5416F662890050BFF1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		3302AC5616F662890050BFF1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -54,6 +50,8 @@
 		3302AC6016F662890050BFF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3302AC6216F662890050BFF1 /* DickensTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DickensTests.h; sourceTree = "<group>"; };
 		3302AC6316F662890050BFF1 /* DickensTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DickensTests.m; sourceTree = "<group>"; };
+		3302AC6D16F664F80050BFF1 /* KKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKTextView.h; path = Subclasses/KKTextView.h; sourceTree = "<group>"; };
+		3302AC6E16F664F80050BFF1 /* KKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKTextView.m; path = Subclasses/KKTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +109,8 @@
 		3302AC4716F662880050BFF1 /* Dickens */ = {
 			isa = PBXGroup;
 			children = (
-				3302AC4A16F662880050BFF1 /* Dickens.h */,
-				3302AC4C16F662880050BFF1 /* Dickens.m */,
+				3302AC7116F6651B0050BFF1 /* Categories */,
+				3302AC7016F665000050BFF1 /* Subclasses */,
 				3302AC4816F662880050BFF1 /* Supporting Files */,
 			);
 			path = Dickens;
@@ -143,6 +141,22 @@
 				3302AC5F16F662890050BFF1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3302AC7016F665000050BFF1 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				3302AC6D16F664F80050BFF1 /* KKTextView.h */,
+				3302AC6E16F664F80050BFF1 /* KKTextView.m */,
+			);
+			name = Subclasses;
+			sourceTree = "<group>";
+		};
+		3302AC7116F6651B0050BFF1 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3302AC4D16F662880050BFF1 /* Dickens.m in Sources */,
+				3302AC6F16F664F80050BFF1 /* KKTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +417,7 @@
 				3302AC6916F662890050BFF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3302AC6A16F662890050BFF1 /* Build configuration list for PBXNativeTarget "DickensTests" */ = {
 			isa = XCConfigurationList;
@@ -411,6 +426,7 @@
 				3302AC6C16F662890050BFF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
