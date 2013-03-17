@@ -11,6 +11,8 @@
 NSString * const KKPolishLeftDoubleQuote = @"“";
 NSString * const KKPolishRightDoubleQuote = @"”";
 
+NSString * const KKPolishDoubleQuoteExpression = @"\".*\"";
+
 @implementation NSString (KKPolishing)
 
 #pragma mark - These should be in NSString by default.
@@ -22,19 +24,17 @@ NSString * const KKPolishRightDoubleQuote = @"”";
 
 #pragma mark - Polish Methods
 
-- (void)polishString:(KKPolishingStringCompletionBlock)completionHandler
+- (NSString *)polishedString
 {
     NSMutableString *grammaticallyPolishedString = self.mutableCopy;
 
-    NSRegularExpression *expression = [[NSRegularExpression alloc] initWithPattern:@"\".*\"" options:NSRegularExpressionDotMatchesLineSeparators error:nil];
+    NSRegularExpression *expression = [[NSRegularExpression alloc] initWithPattern:KKPolishDoubleQuoteExpression options:NSRegularExpressionDotMatchesLineSeparators error:nil];
 
     for (NSTextCheckingResult *quoteResult in [expression matchesInString:self options:NSMatchingReportCompletion range:self.endToEndRange]) {
         [grammaticallyPolishedString replaceCharactersInRange:quoteResult.range withString:[NSString stringWithFormat:@"%@%@%@", KKPolishLeftDoubleQuote, [grammaticallyPolishedString substringWithRange:NSMakeRange(quoteResult.range.location + 1, quoteResult.range.length - 2)], KKPolishRightDoubleQuote]];
     }
 
-    NSLog(@"%@", grammaticallyPolishedString);
-
-    completionHandler(grammaticallyPolishedString);
+    return [[NSString alloc] initWithString:grammaticallyPolishedString];
 }
 
 @end

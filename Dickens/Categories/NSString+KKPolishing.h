@@ -19,6 +19,6 @@ extern NSString *const KKPolishRightDoubleQuote;
 
 #pragma mark - Polish Methods
 
-- (void)polishString:(KKPolishingStringCompletionBlock)completionHandler;
+- (NSString *)polishedString;
 
 @end
