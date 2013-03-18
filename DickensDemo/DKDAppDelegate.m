@@ -10,6 +10,10 @@
 #import <Dickens/NSString+KKPolishing.h>
 
 @implementation DKDAppDelegate {
+    UITextView *_polishedTextView;
+
+    NSMutableString *_rawEnteredText;
+
     dispatch_queue_t _polishQueue;
 }
 
@@ -24,13 +28,13 @@
     self.window.rootViewController = viewController;
 
     _polishQueue = dispatch_queue_create("com.handcrafted.DickensDemo.textProcessing", DISPATCH_QUEUE_SERIAL);
-
-    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectZero];
-    textView.delegate = self;
-    viewController.view = textView;
+    
+    _polishedTextView = [[UITextView alloc] initWithFrame:CGRectMake(10.f, 10.f, viewController.view.frame.size.width - 20.f, ((viewController.view.frame.size.height - 20.f) * .5f) - 10.f)];
+    _polishedTextView.delegate = self;
+    [viewController.view addSubview:_polishedTextView];
 
     [self.window makeKeyAndVisible];
-    [textView becomeFirstResponder];
+    [_polishedTextView becomeFirstResponder];
 
     return YES;
 }
@@ -40,7 +44,7 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     NSString *textViewText = [textView.text stringByReplacingCharactersInRange:range withString:text];
-
+    
     dispatch_async(_polishQueue, ^{
         NSString *refinedText = textViewText.polishedString;
 
