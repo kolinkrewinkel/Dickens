@@ -23,7 +23,9 @@ NSString *const KKPolishSingleQuoteExpression = @"'.*'";
 #pragma mark - Ellipsis
 
 NSString *const KKCharacterEllipsis = @"\u2026";
-NSString *const KKPolishingEllipsisExpression = @"(...)(?!’|”|'|\")";
+NSString *const KKPolishEllipsisExpression = @"(...)(?!’|”|'|\")";
+
+#pragma mark - Implementation
 
 @implementation NSString (KKPolishing)
 
@@ -43,17 +45,24 @@ NSString *const KKPolishingEllipsisExpression = @"(...)(?!’|”|'|\")";
 
     // Single quotes.
     NSRegularExpression *singleQuoteExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishSingleQuoteExpression options:NSRegularExpressionDotMatchesLineSeparators error:nil]; // Dot matches line seperators to include quotes which include linebreaks.
-    for (NSTextCheckingResult *quoteResult in [singleQuoteExpression matchesInString:self options:NSMatchingReportCompletion range:self.endToEndRange]) {
+
+    for (NSTextCheckingResult *quoteResult in [singleQuoteExpression matchesInString:grammaticallyPolishedString options:NSMatchingReportCompletion range:grammaticallyPolishedString.endToEndRange]) {
         NSString *content = [grammaticallyPolishedString substringWithRange:NSMakeRange(quoteResult.range.location + 1, quoteResult.range.length - 2)]; // Quoted content
         [grammaticallyPolishedString replaceCharactersInRange:quoteResult.range withString:[self _wrapString:content withOpeningString:KKCharacterLeftSingleQuotationMark closingString:KKCharacterRightSingleQuotationMark]]; // Replace dumb single quotes.
     }
 
     // Double quotes.
     NSRegularExpression *doubleQuoteExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishDoubleQuoteExpression options:NSRegularExpressionDotMatchesLineSeparators error:nil]; // Dot matches line seperators to include quotes which include linebreaks.
-    for (NSTextCheckingResult *quoteResult in [doubleQuoteExpression matchesInString:self options:NSMatchingReportCompletion range:self.endToEndRange]) {
+
+    for (NSTextCheckingResult *quoteResult in [doubleQuoteExpression matchesInString:grammaticallyPolishedString options:NSMatchingReportCompletion range:grammaticallyPolishedString.endToEndRange]) {
         NSString *content = [grammaticallyPolishedString substringWithRange:NSMakeRange(quoteResult.range.location + 1, quoteResult.range.length - 2)]; // Quoted content
         [grammaticallyPolishedString replaceCharactersInRange:quoteResult.range withString:[self _wrapString:content withOpeningString:KKCharacterLeftDoubleQuotationMark closingString:KKCharacterRightDoubleQuotationMark]]; // Replace dumb double quotes.
     }
+
+    // Ellipsis.
+    NSRegularExpression *ellipsisExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEllipsisExpression options:0 error:nil];
+
+    for (NSTextCheckingResult *tripleDotResult in [ellipsisExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.endToEndRange])
 
     return [[NSString alloc] initWithString:grammaticallyPolishedString];
 }
