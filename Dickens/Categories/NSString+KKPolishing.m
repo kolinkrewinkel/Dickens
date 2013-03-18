@@ -23,7 +23,7 @@ NSString *const KKPolishSingleQuoteExpression = @"(?<= )'.*?'";
 #pragma mark - Ellipsis
 
 NSString *const KKCharacterEllipsis = @"\u2026";
-NSString *const KKPolishEllipsisExpression = @"(\\.\\.\\.)(?!’|”|'|\")";
+NSString *const KKPolishEllipsisExpression = @"\\.\\.\\.";
 
 #pragma mark - Em Dash
 
