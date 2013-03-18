@@ -18,7 +18,7 @@ NSString *const KKPolishDoubleQuoteExpression = @"\".*\"";
 
 NSString *const KKCharacterLeftSingleQuotationMark = @"\u2018";
 NSString *const KKCharacterRightSingleQuotationMark = @"\u2019";
-NSString *const KKPolishSingleQuoteExpression = @"'.*'";
+NSString *const KKPolishSingleQuoteExpression = @"'.*?'";
 
 #pragma mark - Ellipsis
 
