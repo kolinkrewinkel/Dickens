@@ -28,6 +28,7 @@ NSString *const KKPolishEllipsisExpression = @"(\\.\\.\\.)(?!’|”|'|\")";
 #pragma mark - Em Dash
 
 NSString *const KKCharacterEmDash = @"\u2014";
+NSString *const KKPolishEmDashExpression = @"\\w - \\w";
 
 #pragma mark - En Dash
 
@@ -69,7 +70,7 @@ NSString *const KKPolishEnDashExpression = @"(?<=\\w )-(?= \\w)|(?<=[0-9])-(?=[0
     }
 
     // Ellipsis.
-    NSRegularExpression *ellipsisExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEllipsisExpression options:NSRegularExpressionUseUnicodeWordBoundaries error:nil];
+    NSRegularExpression *ellipsisExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEllipsisExpression options:0 error:nil];
     NSUInteger charactersChanged = 0;
 
     for (NSTextCheckingResult *tripleDotResult in [ellipsisExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.endToEndRange]) {
@@ -87,6 +88,14 @@ NSString *const KKPolishEnDashExpression = @"(?<=\\w )-(?= \\w)|(?<=[0-9])-(?=[0
     for (NSTextCheckingResult *hyphenResult in [enDashExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.endToEndRange]) {
         [grammaticallyPolishedString replaceCharactersInRange:hyphenResult.range withString:KKCharacterEnDash];
     }
+
+    // Em dashes.
+    NSRegularExpression *emDashExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEmDashExpression options:0 error:nil];
+
+    for (NSTextCheckingResult *hyphenResult in [emDashExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.endToEndRange]) {
+        [grammaticallyPolishedString replaceCharactersInRange:hyphenResult.range withString:KKCharacterEmDash];
+    }
+
 
     return [[NSString alloc] initWithString:grammaticallyPolishedString];
 }
