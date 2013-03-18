@@ -14,6 +14,9 @@ extern NSString *const KKCharacterRightDoubleQuotationMark;
 extern NSString *const KKCharacterLeftSingleQuotationMark;
 extern NSString *const KKCharacterRightSingleQuotationMark;
 
+extern NSString *const KKCharacterEmDash;
+extern NSString *const KKCharacterEnDash;
+
 @interface NSString (KKPolishing)
 
 #pragma mark - These should be in NSString by default.

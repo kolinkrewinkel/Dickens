@@ -25,6 +25,8 @@ NSString *const KKPolishSingleQuoteExpression = @"'.*'";
 NSString *const KKCharacterEllipsis = @"\u2026";
 NSString *const KKPolishEllipsisExpression = @"(\\.\\.\\.)(?!’|”|'|\")";
 
+#pragma mark - 
+
 #pragma mark - Implementation
 
 @implementation NSString (KKPolishing)
@@ -64,9 +66,15 @@ NSString *const KKPolishEllipsisExpression = @"(\\.\\.\\.)(?!’|”|'|\")";
 
     NSUInteger charactersChanged = 0;
     for (NSTextCheckingResult *tripleDotResult in [ellipsisExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.endToEndRange]) {
+
+        // Because we're actually mutating the string we used to find the ranges, we need to make sure that the ranges we use accumulate/are concious of the new positions.
         [grammaticallyPolishedString replaceCharactersInRange:NSMakeRange(tripleDotResult.range.location - charactersChanged, tripleDotResult.range.length) withString:KKCharacterEllipsis];
+
+        // Increment! (... -> …)
         charactersChanged += 2;
     }
+
+    //
 
     return [[NSString alloc] initWithString:grammaticallyPolishedString];
 }
