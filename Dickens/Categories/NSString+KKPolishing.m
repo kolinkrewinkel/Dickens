@@ -32,7 +32,7 @@ NSString *const KKCharacterEmDash = @"\u2014";
 #pragma mark - En Dash
 
 NSString *const KKCharacterEnDash = @"\u2013";
-NSString *const KKPolishEnDashExpression = @"(\b - \b)|((?<=[0-9])-(?=[0-9]))"; // Captures word space hyphen space word, and numbers hyphen numbers.
+NSString *const KKPolishEnDashExpression = @"(\\b(?<= )-(?= )\\b)|((?<=[0-9])-(?=[0-9]))"; // Captures word space hyphen space word, and numbers hyphen numbers.
 
 #pragma mark - Implementation
 

@@ -32,6 +32,7 @@ NSString *const DickensTestPolishedString = @"This string contains “dumb doubl
 {
     NSString *polishedString = DickensTestMessyString.polishedString;
     NSLog(@"Polished String: %@", polishedString);
+    NSLog(@"    Goal String: %@", DickensTestPolishedString);
     STAssertTrue([polishedString isEqualToString:DickensTestPolishedString], @"Polish failed.");
 }
 
