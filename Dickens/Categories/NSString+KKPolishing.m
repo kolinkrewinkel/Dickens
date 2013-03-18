@@ -62,7 +62,11 @@ NSString *const KKPolishEllipsisExpression = @"(...)(?!’|”|'|\")";
     // Ellipsis.
     NSRegularExpression *ellipsisExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEllipsisExpression options:0 error:nil];
 
-    for (NSTextCheckingResult *tripleDotResult in [ellipsisExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.endToEndRange])
+    NSUInteger charactersChanged = 0;
+    for (NSTextCheckingResult *tripleDotResult in [ellipsisExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.endToEndRange]) {
+        [grammaticallyPolishedString replaceCharactersInRange:NSMakeRange(tripleDotResult.range.location - charactersChanged, tripleDotResult.range.length) withString:KKCharacterEllipsis];
+        charactersChanged += 2;
+    }
 
     return [[NSString alloc] initWithString:grammaticallyPolishedString];
 }
