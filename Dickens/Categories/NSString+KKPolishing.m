@@ -18,7 +18,7 @@ NSString *const KKPolishDoubleQuoteExpression = @"\".*\"";
 
 NSString *const KKCharacterLeftSingleQuotationMark = @"\u2018";
 NSString *const KKCharacterRightSingleQuotationMark = @"\u2019";
-NSString *const KKPolishSingleQuoteExpression = @"'.*?'";
+NSString *const KKPolishSingleQuoteExpression = @"(?<= )'.*?'";
 
 #pragma mark - Ellipsis
 
@@ -28,12 +28,17 @@ NSString *const KKPolishEllipsisExpression = @"(\\.\\.\\.)(?!’|”|'|\")";
 #pragma mark - Em Dash
 
 NSString *const KKCharacterEmDash = @"\u2014";
-NSString *const KKPolishEmDashExpression = @"\\w - \\w";
+NSString *const KKPolishEmDashExpression = @"(?<=\\w)-(?=\\w)";
 
 #pragma mark - En Dash
 
 NSString *const KKCharacterEnDash = @"\u2013";
 NSString *const KKPolishEnDashExpression = @"(?<=\\w )-(?= \\w)|(?<=[0-9])-(?=[0-9])"; // Captures word space hyphen space word, and numbers hyphen numbers.
+
+#pragma mark - Apostrophe
+
+NSString *const KKCharacterApostrophe = @"\u02bc";
+NSString *const KKPolishApostropheExpression = @"(?<=\\w)'(?=\\w )";
 
 #pragma mark - Implementation
 
@@ -82,13 +87,6 @@ NSString *const KKPolishEnDashExpression = @"(?<=\\w )-(?= \\w)|(?<=[0-9])-(?=[0
         charactersChanged += 2;
     }
 
-    // En dashes.
-    NSRegularExpression *enDashExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEnDashExpression options:0 error:nil];
-
-    for (NSTextCheckingResult *hyphenResult in [enDashExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.endToEndRange]) {
-        [grammaticallyPolishedString replaceCharactersInRange:hyphenResult.range withString:KKCharacterEnDash];
-    }
-
     // Em dashes.
     NSRegularExpression *emDashExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEmDashExpression options:0 error:nil];
 
@@ -96,6 +94,19 @@ NSString *const KKPolishEnDashExpression = @"(?<=\\w )-(?= \\w)|(?<=[0-9])-(?=[0
         [grammaticallyPolishedString replaceCharactersInRange:hyphenResult.range withString:KKCharacterEmDash];
     }
 
+    // En dashes.
+    NSRegularExpression *enDashExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEnDashExpression options:0 error:nil];
+
+    for (NSTextCheckingResult *hyphenResult in [enDashExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.endToEndRange]) {
+        [grammaticallyPolishedString replaceCharactersInRange:hyphenResult.range withString:KKCharacterEnDash];
+    }
+    
+    // Apostrophes.
+    NSRegularExpression *apostropheExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishApostropheExpression options:0 error:nil];
+
+    for (NSTextCheckingResult *singleQuoteResult in [apostropheExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.endToEndRange]) {
+        [grammaticallyPolishedString replaceCharactersInRange:singleQuoteResult.range withString:KKCharacterApostrophe];
+    }
 
     return [[NSString alloc] initWithString:grammaticallyPolishedString];
 }
