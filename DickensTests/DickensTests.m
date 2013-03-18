@@ -9,8 +9,8 @@
 #import "DickensTests.h"
 #import "NSString+KKPolishing.h"
 
-NSString *const DickensTestMessyString = @"This string contains \"dumb double quotes.\" As well, it has 'dumb single quotes.' This concludes the quote section...";
-NSString *const DickensTestPolishedString = @"This string contains “dumb double quotes.” As well, it has ‘dumb single quotes.’ This concludes the quote section…";
+NSString *const DickensTestMessyString = @"This string contains \"dumb double quotes.\" As well, it has 'dumb single quotes.' This concludes the quote section... Here's a spaced hyphen - an interruption, per se. Also, a number range (1-4) and date range (1998-2013).";
+NSString *const DickensTestPolishedString = @"This string contains “dumb double quotes.” As well, it has ‘dumb single quotes.’ This concludes the quote section… Here's a spaced hyphen – an interruption, per se. Also, a number range (1–4) and date range (1998–2013).";
 
 @implementation DickensTests
 

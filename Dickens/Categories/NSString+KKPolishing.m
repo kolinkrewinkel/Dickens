@@ -25,7 +25,14 @@ NSString *const KKPolishSingleQuoteExpression = @"'.*'";
 NSString *const KKCharacterEllipsis = @"\u2026";
 NSString *const KKPolishEllipsisExpression = @"(\\.\\.\\.)(?!’|”|'|\")";
 
-#pragma mark - 
+#pragma mark - Em Dash
+
+NSString *const KKCharacterEmDash = @"\u2014";
+
+#pragma mark - En Dash
+
+NSString *const KKCharacterEnDash = @"\u2013";
+NSString *const KKPolishEnDashExpression = @"(\b - \b)|((?<=[0-9])-(?=[0-9]))"; // Captures word space hyphen space word, and numbers hyphen numbers.
 
 #pragma mark - Implementation
 
@@ -63,8 +70,8 @@ NSString *const KKPolishEllipsisExpression = @"(\\.\\.\\.)(?!’|”|'|\")";
 
     // Ellipsis.
     NSRegularExpression *ellipsisExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEllipsisExpression options:0 error:nil];
-
     NSUInteger charactersChanged = 0;
+
     for (NSTextCheckingResult *tripleDotResult in [ellipsisExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.endToEndRange]) {
 
         // Because we're actually mutating the string we used to find the ranges, we need to make sure that the ranges we use accumulate/are concious of the new positions.
@@ -74,7 +81,12 @@ NSString *const KKPolishEllipsisExpression = @"(\\.\\.\\.)(?!’|”|'|\")";
         charactersChanged += 2;
     }
 
-    //
+    // En dashes.
+    NSRegularExpression *enDashExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEnDashExpression options:0 error:nil];
+
+    for (NSTextCheckingResult *hyphenResult in [enDashExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.endToEndRange]) {
+        [grammaticallyPolishedString replaceCharactersInRange:hyphenResult.range withString:KKCharacterEnDash];
+    }
 
     return [[NSString alloc] initWithString:grammaticallyPolishedString];
 }
