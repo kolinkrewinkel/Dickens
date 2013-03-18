@@ -12,8 +12,6 @@
 @implementation DKDAppDelegate {
     UITextView *_polishedTextView;
 
-    NSMutableString *_rawEnteredText;
-
     dispatch_queue_t _polishQueue;
 }
 
