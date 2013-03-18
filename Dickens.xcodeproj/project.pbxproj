@@ -14,8 +14,18 @@
 		3302AC5B16F662890050BFF1 /* libDickens.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3302AC4216F662880050BFF1 /* libDickens.a */; };
 		3302AC6116F662890050BFF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3302AC5F16F662890050BFF1 /* InfoPlist.strings */; };
 		3302AC6416F662890050BFF1 /* DickensTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC6316F662890050BFF1 /* DickensTests.m */; };
-		3302AC6F16F664F80050BFF1 /* KKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC6E16F664F80050BFF1 /* KKTextView.m */; };
-		3302AC7416F6666A0050BFF1 /* NSString+KKPolishing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC7316F6666A0050BFF1 /* NSString+KKPolishing.m */; };
+		3302AC7A16F6E2EE0050BFF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3302AC5616F662890050BFF1 /* UIKit.framework */; };
+		3302AC7B16F6E2EE0050BFF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3302AC4516F662880050BFF1 /* Foundation.framework */; };
+		3302AC7D16F6E2EE0050BFF1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3302AC7C16F6E2EE0050BFF1 /* CoreGraphics.framework */; };
+		3302AC8316F6E2EE0050BFF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3302AC8116F6E2EE0050BFF1 /* InfoPlist.strings */; };
+		3302AC8516F6E2EE0050BFF1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC8416F6E2EE0050BFF1 /* main.m */; };
+		3302AC8916F6E2EE0050BFF1 /* DKDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC8816F6E2EE0050BFF1 /* DKDAppDelegate.m */; };
+		3302AC8B16F6E2EE0050BFF1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3302AC8A16F6E2EE0050BFF1 /* Default.png */; };
+		3302AC8D16F6E2EE0050BFF1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3302AC8C16F6E2EE0050BFF1 /* Default@2x.png */; };
+		3302AC8F16F6E2EE0050BFF1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3302AC8E16F6E2EE0050BFF1 /* Default-568h@2x.png */; };
+		3302AC9316F6E3540050BFF1 /* libDickens.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3302AC4216F662880050BFF1 /* libDickens.a */; };
+		3302AC9816F6E3C90050BFF1 /* KKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC9516F6E3C90050BFF1 /* KKTextView.m */; };
+		3302AC9916F6E3C90050BFF1 /* NSString+KKPolishing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC9716F6E3C90050BFF1 /* NSString+KKPolishing.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,10 +61,21 @@
 		3302AC6016F662890050BFF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3302AC6216F662890050BFF1 /* DickensTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DickensTests.h; sourceTree = "<group>"; };
 		3302AC6316F662890050BFF1 /* DickensTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DickensTests.m; sourceTree = "<group>"; };
-		3302AC6D16F664F80050BFF1 /* KKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKTextView.h; path = Subclasses/KKTextView.h; sourceTree = "<group>"; };
-		3302AC6E16F664F80050BFF1 /* KKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKTextView.m; path = Subclasses/KKTextView.m; sourceTree = "<group>"; };
-		3302AC7216F6666A0050BFF1 /* NSString+KKPolishing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+KKPolishing.h"; path = "Categories/NSString+KKPolishing.h"; sourceTree = "<group>"; };
-		3302AC7316F6666A0050BFF1 /* NSString+KKPolishing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+KKPolishing.m"; path = "Categories/NSString+KKPolishing.m"; sourceTree = "<group>"; };
+		3302AC7916F6E2EE0050BFF1 /* DickensDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DickensDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3302AC7C16F6E2EE0050BFF1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3302AC8016F6E2EE0050BFF1 /* DickensDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DickensDemo-Info.plist"; sourceTree = "<group>"; };
+		3302AC8216F6E2EE0050BFF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3302AC8416F6E2EE0050BFF1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3302AC8616F6E2EE0050BFF1 /* DickensDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DickensDemo-Prefix.pch"; sourceTree = "<group>"; };
+		3302AC8716F6E2EE0050BFF1 /* DKDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKDAppDelegate.h; sourceTree = "<group>"; };
+		3302AC8816F6E2EE0050BFF1 /* DKDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKDAppDelegate.m; sourceTree = "<group>"; };
+		3302AC8A16F6E2EE0050BFF1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		3302AC8C16F6E2EE0050BFF1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		3302AC8E16F6E2EE0050BFF1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3302AC9416F6E3C90050BFF1 /* KKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKTextView.h; sourceTree = "<group>"; };
+		3302AC9516F6E3C90050BFF1 /* KKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKTextView.m; sourceTree = "<group>"; };
+		3302AC9616F6E3C90050BFF1 /* NSString+KKPolishing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+KKPolishing.h"; sourceTree = "<group>"; };
+		3302AC9716F6E3C90050BFF1 /* NSString+KKPolishing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+KKPolishing.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +98,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3302AC7616F6E2EE0050BFF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3302AC7D16F6E2EE0050BFF1 /* CoreGraphics.framework in Frameworks */,
+				3302AC7B16F6E2EE0050BFF1 /* Foundation.framework in Frameworks */,
+				3302AC9316F6E3540050BFF1 /* libDickens.a in Frameworks */,
+				3302AC7A16F6E2EE0050BFF1 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -85,6 +117,7 @@
 			children = (
 				3302AC4716F662880050BFF1 /* Dickens */,
 				3302AC5C16F662890050BFF1 /* DickensTests */,
+				3302AC7E16F6E2EE0050BFF1 /* DickensDemo */,
 				3302AC4416F662880050BFF1 /* Frameworks */,
 				3302AC4316F662880050BFF1 /* Products */,
 			);
@@ -95,6 +128,7 @@
 			children = (
 				3302AC4216F662880050BFF1 /* libDickens.a */,
 				3302AC5316F662890050BFF1 /* DickensTests.octest */,
+				3302AC7916F6E2EE0050BFF1 /* DickensDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,6 +139,7 @@
 				3302AC4516F662880050BFF1 /* Foundation.framework */,
 				3302AC5416F662890050BFF1 /* SenTestingKit.framework */,
 				3302AC5616F662890050BFF1 /* UIKit.framework */,
+				3302AC7C16F6E2EE0050BFF1 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,8 +147,8 @@
 		3302AC4716F662880050BFF1 /* Dickens */ = {
 			isa = PBXGroup;
 			children = (
-				3302AC7116F6651B0050BFF1 /* Categories */,
-				3302AC7016F665000050BFF1 /* Subclasses */,
+				3302AC9B16F6E3D20050BFF1 /* Categories */,
+				3302AC9A16F6E3CD0050BFF1 /* Subclasses */,
 				3302AC4816F662880050BFF1 /* Supporting Files */,
 			);
 			path = Dickens;
@@ -146,20 +181,44 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3302AC7016F665000050BFF1 /* Subclasses */ = {
+		3302AC7E16F6E2EE0050BFF1 /* DickensDemo */ = {
 			isa = PBXGroup;
 			children = (
-				3302AC6D16F664F80050BFF1 /* KKTextView.h */,
-				3302AC6E16F664F80050BFF1 /* KKTextView.m */,
+				3302AC8716F6E2EE0050BFF1 /* DKDAppDelegate.h */,
+				3302AC8816F6E2EE0050BFF1 /* DKDAppDelegate.m */,
+				3302AC7F16F6E2EE0050BFF1 /* Supporting Files */,
+			);
+			path = DickensDemo;
+			sourceTree = "<group>";
+		};
+		3302AC7F16F6E2EE0050BFF1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3302AC8016F6E2EE0050BFF1 /* DickensDemo-Info.plist */,
+				3302AC8116F6E2EE0050BFF1 /* InfoPlist.strings */,
+				3302AC8416F6E2EE0050BFF1 /* main.m */,
+				3302AC8616F6E2EE0050BFF1 /* DickensDemo-Prefix.pch */,
+				3302AC8A16F6E2EE0050BFF1 /* Default.png */,
+				3302AC8C16F6E2EE0050BFF1 /* Default@2x.png */,
+				3302AC8E16F6E2EE0050BFF1 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3302AC9A16F6E3CD0050BFF1 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				3302AC9416F6E3C90050BFF1 /* KKTextView.h */,
+				3302AC9516F6E3C90050BFF1 /* KKTextView.m */,
 			);
 			name = Subclasses;
 			sourceTree = "<group>";
 		};
-		3302AC7116F6651B0050BFF1 /* Categories */ = {
+		3302AC9B16F6E3D20050BFF1 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				3302AC7216F6666A0050BFF1 /* NSString+KKPolishing.h */,
-				3302AC7316F6666A0050BFF1 /* NSString+KKPolishing.m */,
+				3302AC9616F6E3C90050BFF1 /* NSString+KKPolishing.h */,
+				3302AC9716F6E3C90050BFF1 /* NSString+KKPolishing.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -203,6 +262,23 @@
 			productReference = 3302AC5316F662890050BFF1 /* DickensTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		3302AC7816F6E2EE0050BFF1 /* DickensDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3302AC9016F6E2EE0050BFF1 /* Build configuration list for PBXNativeTarget "DickensDemo" */;
+			buildPhases = (
+				3302AC7516F6E2EE0050BFF1 /* Sources */,
+				3302AC7616F6E2EE0050BFF1 /* Frameworks */,
+				3302AC7716F6E2EE0050BFF1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DickensDemo;
+			productName = DickensDemo;
+			productReference = 3302AC7916F6E2EE0050BFF1 /* DickensDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -226,6 +302,7 @@
 			targets = (
 				3302AC4116F662880050BFF1 /* Dickens */,
 				3302AC5216F662890050BFF1 /* DickensTests */,
+				3302AC7816F6E2EE0050BFF1 /* DickensDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -236,6 +313,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				3302AC6116F662890050BFF1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3302AC7716F6E2EE0050BFF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3302AC8316F6E2EE0050BFF1 /* InfoPlist.strings in Resources */,
+				3302AC8B16F6E2EE0050BFF1 /* Default.png in Resources */,
+				3302AC8D16F6E2EE0050BFF1 /* Default@2x.png in Resources */,
+				3302AC8F16F6E2EE0050BFF1 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,8 +350,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3302AC6F16F664F80050BFF1 /* KKTextView.m in Sources */,
-				3302AC7416F6666A0050BFF1 /* NSString+KKPolishing.m in Sources */,
+				3302AC9816F6E3C90050BFF1 /* KKTextView.m in Sources */,
+				3302AC9916F6E3C90050BFF1 /* NSString+KKPolishing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +360,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3302AC6416F662890050BFF1 /* DickensTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3302AC7516F6E2EE0050BFF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3302AC8516F6E2EE0050BFF1 /* main.m in Sources */,
+				3302AC8916F6E2EE0050BFF1 /* DKDAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +387,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				3302AC6016F662890050BFF1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3302AC8116F6E2EE0050BFF1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3302AC8216F6E2EE0050BFF1 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -416,6 +521,51 @@
 			};
 			name = Release;
 		};
+		3302AC9116F6E2EE0050BFF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DickensDemo/DickensDemo-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/";
+				INFOPLIST_FILE = "DickensDemo/DickensDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3302AC9216F6E2EE0050BFF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DickensDemo/DickensDemo-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/";
+				INFOPLIST_FILE = "DickensDemo/DickensDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -445,6 +595,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		3302AC9016F6E2EE0050BFF1 /* Build configuration list for PBXNativeTarget "DickensDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3302AC9116F6E2EE0050BFF1 /* Debug */,
+				3302AC9216F6E2EE0050BFF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

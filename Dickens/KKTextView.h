@@ -14,8 +14,4 @@
 
 @property (nonatomic) BOOL polishTextAutomatically;
 
-#pragma mark - Polish Methods
-
-- (void)setText:(NSString *)text polish:(BOOL)polish;
-
 @end

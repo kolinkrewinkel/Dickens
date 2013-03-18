@@ -11,8 +11,6 @@
 
 @implementation KKTextView {
     dispatch_queue_t _polishQueue;
-
-    BOOL _shouldPolish; // One time polishing.
 }
 
 #pragma mark - Initializers
@@ -49,25 +47,7 @@
 - (void)_commonInit
 {
     _polishQueue = dispatch_queue_create("com.handcrafted.textView.polishing", DISPATCH_QUEUE_SERIAL);
-}
-
-#pragma mark - Setters
-
-- (void)setText:(NSString *)text polish:(BOOL)polish
-{
-    _shouldPolish = YES;
-    self.text = text;
-    _shouldPolish = NO;
-}
-
-- (void)setText:(NSString *)text
-{
-    [super setText:text];
-
-    if (_shouldPolish || _polishTextAutomatically)
-        dispatch_async(_polishQueue, ^{
-            [super setText:text.polishedString];
-        });
+    self.polishTextAutomatically = YES;
 }
 
 @end
