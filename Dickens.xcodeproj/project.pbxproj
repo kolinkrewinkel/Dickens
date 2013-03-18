@@ -24,7 +24,6 @@
 		3302AC8D16F6E2EE0050BFF1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3302AC8C16F6E2EE0050BFF1 /* Default@2x.png */; };
 		3302AC8F16F6E2EE0050BFF1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3302AC8E16F6E2EE0050BFF1 /* Default-568h@2x.png */; };
 		3302AC9316F6E3540050BFF1 /* libDickens.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3302AC4216F662880050BFF1 /* libDickens.a */; };
-		3302AC9816F6E3C90050BFF1 /* KKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC9516F6E3C90050BFF1 /* KKTextView.m */; };
 		3302AC9916F6E3C90050BFF1 /* NSString+KKPolishing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3302AC9716F6E3C90050BFF1 /* NSString+KKPolishing.m */; };
 /* End PBXBuildFile section */
 
@@ -72,8 +71,6 @@
 		3302AC8A16F6E2EE0050BFF1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3302AC8C16F6E2EE0050BFF1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3302AC8E16F6E2EE0050BFF1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		3302AC9416F6E3C90050BFF1 /* KKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKTextView.h; sourceTree = "<group>"; };
-		3302AC9516F6E3C90050BFF1 /* KKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKTextView.m; sourceTree = "<group>"; };
 		3302AC9616F6E3C90050BFF1 /* NSString+KKPolishing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+KKPolishing.h"; sourceTree = "<group>"; };
 		3302AC9716F6E3C90050BFF1 /* NSString+KKPolishing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+KKPolishing.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				3302AC9B16F6E3D20050BFF1 /* Categories */,
-				3302AC9A16F6E3CD0050BFF1 /* Subclasses */,
 				3302AC4816F662880050BFF1 /* Supporting Files */,
 			);
 			path = Dickens;
@@ -203,15 +199,6 @@
 				3302AC8E16F6E2EE0050BFF1 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		3302AC9A16F6E3CD0050BFF1 /* Subclasses */ = {
-			isa = PBXGroup;
-			children = (
-				3302AC9416F6E3C90050BFF1 /* KKTextView.h */,
-				3302AC9516F6E3C90050BFF1 /* KKTextView.m */,
-			);
-			name = Subclasses;
 			sourceTree = "<group>";
 		};
 		3302AC9B16F6E3D20050BFF1 /* Categories */ = {
@@ -350,7 +337,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3302AC9816F6E3C90050BFF1 /* KKTextView.m in Sources */,
 				3302AC9916F6E3C90050BFF1 /* NSString+KKPolishing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
