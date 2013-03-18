@@ -10,4 +10,12 @@
 
 @interface KKTextView : UITextView
 
+#pragma mark - Polishment Properties
+
+@property (nonatomic) BOOL polishTextAutomatically;
+
+#pragma mark - Polish Methods
+
+- (void)setText:(NSString *)text polish:(BOOL)polish;
+
 @end
