@@ -32,7 +32,7 @@ NSString *const KKCharacterEmDash = @"\u2014";
 #pragma mark - En Dash
 
 NSString *const KKCharacterEnDash = @"\u2013";
-NSString *const KKPolishEnDashExpression = @"(?<=\\w )-(?= \\w)"; // Captures word space hyphen space word, and numbers hyphen numbers.
+NSString *const KKPolishEnDashExpression = @"(?<=\\w )-(?= \\w)|(?<=[0-9])-(?=[0-9])"; // Captures word space hyphen space word, and numbers hyphen numbers.
 
 #pragma mark - Implementation
 
@@ -69,7 +69,7 @@ NSString *const KKPolishEnDashExpression = @"(?<=\\w )-(?= \\w)"; // Captures wo
     }
 
     // Ellipsis.
-    NSRegularExpression *ellipsisExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEllipsisExpression options:0 error:nil];
+    NSRegularExpression *ellipsisExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEllipsisExpression options:NSRegularExpressionUseUnicodeWordBoundaries error:nil];
     NSUInteger charactersChanged = 0;
 
     for (NSTextCheckingResult *tripleDotResult in [ellipsisExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.endToEndRange]) {
