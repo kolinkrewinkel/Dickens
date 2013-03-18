@@ -7,9 +7,11 @@
 //
 
 #import "DKDAppDelegate.h"
-#import <Dickens/KKTextView.h>
+#import <Dickens/NSString+KKPolishing.h>
 
-@implementation DKDAppDelegate
+@implementation DKDAppDelegate {
+    dispatch_queue_t _polishQueue;
+}
 
 #pragma mark - UIApplicationDelegate
 
@@ -20,16 +22,34 @@
 
     UIViewController *viewController = [[UIViewController alloc] init];
     self.window.rootViewController = viewController;
-    
-    KKTextView *textView = [[KKTextView alloc] initWithFrame:viewController.view.bounds];
+
+    _polishQueue = dispatch_queue_create("com.handcrafted.DickensDemo.textProcessing", DISPATCH_QUEUE_SERIAL);
+
+    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectZero];
     textView.delegate = self;
     viewController.view = textView;
 
     [self.window makeKeyAndVisible];
+    [textView becomeFirstResponder];
 
     return YES;
 }
 
 #pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    NSString *textViewText = [textView.text stringByReplacingCharactersInRange:range withString:text];
+
+    dispatch_async(_polishQueue, ^{
+        NSString *refinedText = textViewText.polishedString;
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            textView.text = refinedText;
+        });
+    });
+
+    return YES;
+}
 
 @end
