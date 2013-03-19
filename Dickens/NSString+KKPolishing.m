@@ -84,7 +84,7 @@ NSString *const KKPolishApostropheExpression = @"(?<=\\w)'(?=\\w )";
         [grammaticallyPolishedString replaceCharactersInRange:NSMakeRange(tripleDotResult.range.location - charactersChanged, tripleDotResult.range.length) withString:KKCharacterEllipsis];
 
         // Increment! (... -> …)
-        charactersChanged += 2;
+        charactersChanged += tripleDotResult.range.length - KKCharacterEllipsis.length;
     }
 
     // Em dashes.
@@ -97,8 +97,10 @@ NSString *const KKPolishApostropheExpression = @"(?<=\\w)'(?=\\w )";
     // En dashes.
     NSRegularExpression *enDashExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEnDashExpression options:0 error:nil];
 
+    NSUInteger charactersChanged = 0;
     for (NSTextCheckingResult *hyphenResult in [enDashExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.endToEndRange]) {
-        [grammaticallyPolishedString replaceCharactersInRange:hyphenResult.range withString:KKCharacterEnDash];
+        [grammaticallyPolishedString replaceCharactersInRange:NSMakeRange(hyphenResult.range.location - charactersChanged, hyphenResult.range.length) withString:KKCharacterEnDash];
+        charactersChanged += hyphenResult.range.length - KKCharacterEnDash.length;
     }
     
     // Apostrophes.
