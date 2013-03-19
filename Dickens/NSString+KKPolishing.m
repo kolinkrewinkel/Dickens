@@ -28,7 +28,7 @@ NSString *const KKPolishEllipsisExpression = @"\\.\\.\\.";
 #pragma mark - Em Dash
 
 NSString *const KKCharacterEmDash = @"\u2014";
-NSString *const KKPolishEmDashExpression = @"(?<![0-9 ])-(?![0-9 ])";
+NSString *const KKPolishEmDashExpression = @"(?<=\\w)(-{2,3})(?=\\w)";
 
 #pragma mark - En Dash
 
