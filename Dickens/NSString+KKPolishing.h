@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Handcrafted. All rights reserved.
 //
 
-typedef void (^KKPolishingStringCompletionBlock)(NSString *polishedString);
+#pragma mark - Constants for nice characters. For your convenience.
 
 extern NSString *const KKCharacterLeftDoubleQuotationMark;
 extern NSString *const KKCharacterRightDoubleQuotationMark;
@@ -23,10 +23,19 @@ extern NSString *const KKCharacterApostrophe;
 
 #pragma mark - These should be in NSString by default.
 
-- (NSRange)endToEndRange;
+- (NSRange)KK_endToEndRange;
 
 #pragma mark - Polish Methods
 
-- (NSString *)polishedString;
+// Primary method. Put this on a queue for your users' sake.
+- (NSString *)KK_polishedString;
+
+// Takes the body and encloses it with the opening and closing string. Helpful with quotes.
+- (NSString *)KK_wrapString:(NSString *)bodyString withOpeningString:(NSString *)openingString closingString:(NSString *)closingString;
+
+#pragma mark - Helpers
+
++ (dispatch_queue_t)KK_sharedPolishQueue; // Returns a shared serial queue which prevents text from regressing. If you have a large volume of polishing from multiple text views happening simulataneously, it may be advantageous to instantiate your own serial queue for each, so they're not conflicting. For most, however, the single, shared queue will be enough, especially on iOS.
+
 
 @end
