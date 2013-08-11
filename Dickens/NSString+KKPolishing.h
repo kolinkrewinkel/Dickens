@@ -37,8 +37,9 @@ extern NSString *const KKApostropheCorrections;
 
 #pragma mark - Polish Methods
 
-// Primary method. Put this on a queue for your users' sake.
+// Primary methods. Put this on a queue for your users' sake.
 - (NSString *)KK_polishedString;
+- (NSDictionary *)KK_correctionTextCheckingResults;
 
 // Takes the body and encloses it with the opening and closing string. Helpful with quotes.
 - (NSString *)KK_wrapString:(NSString *)bodyString withOpeningString:(NSString *)openingString closingString:(NSString *)closingString;
