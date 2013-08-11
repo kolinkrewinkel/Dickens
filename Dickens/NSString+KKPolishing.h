@@ -19,6 +19,16 @@ extern NSString *const KKCharacterEnDash;
 
 extern NSString *const KKCharacterApostrophe;
 
+#pragma mark - Dictionary Constants
+
+extern NSString *const KKOperatedString;
+extern NSString *const KKSingleQuoteCorrections;
+extern NSString *const KKDoubleQuoteCorrections;
+extern NSString *const KKEllipsisCorrections;
+extern NSString *const KKEmDashCorrections;
+extern NSString *const KKEnDashCorrections;
+extern NSString *const KKApostropheCorrections;
+
 @interface NSString (KKPolishing)
 
 #pragma mark - These should be in NSString by default.

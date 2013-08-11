@@ -44,79 +44,127 @@ NSString *const KKPolishApostropheExpression = @"(?<=\\w)'(?=\\w )";
 
 @implementation NSString (KKPolishing)
 
-#pragma mark - These should be in NSString by default.
+#pragma mark - Convenience
 
 - (NSRange)KK_endToEndRange
 {
     return NSMakeRange(0, self.length); // The entire length of the string.
 }
 
+- (NSMutableString *)KK_correctionRegressedMutableCopy
+{
+    NSMutableString *copy = self.mutableCopy;
+
+    [copy replaceOccurrencesOfString:KKCharacterLeftDoubleQuotationMark withString:@"\"" options:0 range:self.KK_endToEndRange];
+    [copy replaceOccurrencesOfString:KKCharacterRightDoubleQuotationMark withString:@"\"" options:0 range:self.KK_endToEndRange];
+    [copy replaceOccurrencesOfString:KKCharacterLeftSingleQuotationMark withString:@"'" options:0 range:self.KK_endToEndRange];
+    [copy replaceOccurrencesOfString:KKCharacterRightSingleQuotationMark withString:@"'" options:0 range:self.KK_endToEndRange];
+    [copy replaceOccurrencesOfString:KKCharacterApostrophe withString:@"'" options:0 range:self.KK_endToEndRange];
+
+    return copy;
+}
+
 #pragma mark - Polish Methods
 
-- (NSString *)KK_polishedString
+- (NSDictionary *)KK_correctionTextCheckingResults
 {
     // Make a copy to make mutating it easier.
-    NSMutableString *grammaticallyPolishedString = self.mutableCopy;
+    NSMutableString *string = [self KK_correctionRegressedMutableCopy];
+    NSRange endToEndRange = [string KK_endToEndRange];
 
-    [grammaticallyPolishedString replaceOccurrencesOfString:KKCharacterLeftDoubleQuotationMark withString:@"\"" options:0 range:self.KK_endToEndRange];
-    [grammaticallyPolishedString replaceOccurrencesOfString:KKCharacterRightDoubleQuotationMark withString:@"\"" options:0 range:self.KK_endToEndRange];
-    [grammaticallyPolishedString replaceOccurrencesOfString:KKCharacterLeftSingleQuotationMark withString:@"'" options:0 range:self.KK_endToEndRange];
-    [grammaticallyPolishedString replaceOccurrencesOfString:KKCharacterRightSingleQuotationMark withString:@"'" options:0 range:self.KK_endToEndRange];
-    [grammaticallyPolishedString replaceOccurrencesOfString:KKCharacterApostrophe withString:@"'" options:0 range:self.KK_endToEndRange];
+    NSMutableDictionary *textCheckingResults = [[NSMutableDictionary alloc] init];
+    textCheckingResults[KKOperatedString] = string;
 
     // Single quotes.
     NSRegularExpression *singleQuoteExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishSingleQuoteExpression options:NSRegularExpressionDotMatchesLineSeparators error:nil]; // Dot matches line seperators to include quotes which include linebreaks.
-
-    for (NSTextCheckingResult *quoteResult in [singleQuoteExpression matchesInString:grammaticallyPolishedString options:NSMatchingReportCompletion range:grammaticallyPolishedString.KK_endToEndRange]) {
-        NSString *content = [grammaticallyPolishedString substringWithRange:NSMakeRange(quoteResult.range.location + 1, quoteResult.range.length - 2)]; // Quoted content
-        [grammaticallyPolishedString replaceCharactersInRange:quoteResult.range withString:[self KK_wrapString:content withOpeningString:KKCharacterLeftSingleQuotationMark closingString:KKCharacterRightSingleQuotationMark]]; // Replace dumb single quotes.
+    NSArray *singleQuoteMatches = [singleQuoteExpression matchesInString:string options:0 range:endToEndRange];
+    if (singleQuoteMatches.count)
+    {
+        textCheckingResults[KKSingleQuoteCorrections] = singleQuoteMatches;
     }
 
     // Double quotes.
     NSRegularExpression *doubleQuoteExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishDoubleQuoteExpression options:NSRegularExpressionDotMatchesLineSeparators error:nil]; // Dot matches line seperators to include quotes which include linebreaks.
-
-    for (NSTextCheckingResult *quoteResult in [doubleQuoteExpression matchesInString:grammaticallyPolishedString options:NSMatchingReportCompletion range:grammaticallyPolishedString.KK_endToEndRange]) {
-        NSString *content = [grammaticallyPolishedString substringWithRange:NSMakeRange(quoteResult.range.location + 1, quoteResult.range.length - 2)]; // Quoted content
-        [grammaticallyPolishedString replaceCharactersInRange:quoteResult.range withString:[self KK_wrapString:content withOpeningString:KKCharacterLeftDoubleQuotationMark closingString:KKCharacterRightDoubleQuotationMark]]; // Replace dumb double quotes.
+    NSArray *doubleQuoteMatches = [doubleQuoteExpression matchesInString:string options:0 range:endToEndRange];
+    if (doubleQuoteMatches.count)
+    {
+        textCheckingResults[KKDoubleQuoteCorrections] = doubleQuoteMatches;
     }
 
     // Ellipsis.
     NSRegularExpression *ellipsisExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEllipsisExpression options:0 error:nil];
-    NSUInteger charactersChanged = 0;
+    NSArray *ellipsisMatches = [ellipsisExpression matchesInString:string options:0 range:endToEndRange];
+    if (ellipsisMatches.count)
+    {
+        textCheckingResults[KKEllipsisCorrections] = ellipsisMatches;
+    }
 
-    for (NSTextCheckingResult *tripleDotResult in [ellipsisExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.KK_endToEndRange]) {
+    // Em dashes.
+    NSRegularExpression *emDashExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEmDashExpression options:0 error:nil];
+    NSArray *emDashMatches = [emDashExpression matchesInString:string options:0 range:endToEndRange];
+    if (emDashMatches.count)
+    {
+        textCheckingResults[KKEmDashCorrections] = emDashMatches;
+    }
+
+    // En dashes.
+    NSRegularExpression *enDashExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEnDashExpression options:0 error:nil];
+    NSArray *enDashMatches = [enDashExpression matchesInString:string options:0 range:endToEndRange];
+    if (enDashMatches.count)
+    {
+        textCheckingResults[KKEnDashCorrections] = enDashMatches;
+    }
+
+    // Apostrophes.
+    NSRegularExpression *apostropheExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishApostropheExpression options:0 error:nil];
+    NSArray *apostropheMatches = [apostropheExpression matchesInString:string options:0 range:endToEndRange];
+    if (apostropheMatches.count)
+    {
+        textCheckingResults[KKApostropheCorrections] = apostropheMatches;
+    }
+
+    return textCheckingResults;
+}
+
+- (NSString *)KK_polishedString
+{
+    NSDictionary *correctionTextCheckingResults = [self KK_correctionTextCheckingResults];
+    NSMutableString *string = correctionTextCheckingResults[KKOperatedString];
+
+    for (NSTextCheckingResult *quoteResult in correctionTextCheckingResults[KKSingleQuoteCorrections]) {
+        NSString *content = [string substringWithRange:NSMakeRange(quoteResult.range.location + 1, quoteResult.range.length - 2)]; // Quoted content
+        [string replaceCharactersInRange:quoteResult.range withString:[self KK_wrapString:content withOpeningString:KKCharacterLeftSingleQuotationMark closingString:KKCharacterRightSingleQuotationMark]]; // Replace dumb single quotes.
+    }
+
+    for (NSTextCheckingResult *quoteResult in correctionTextCheckingResults[KKDoubleQuoteCorrections]) {
+        NSString *content = [string substringWithRange:NSMakeRange(quoteResult.range.location + 1, quoteResult.range.length - 2)]; // Quoted content
+        [string replaceCharactersInRange:quoteResult.range withString:[self KK_wrapString:content withOpeningString:KKCharacterLeftDoubleQuotationMark closingString:KKCharacterRightDoubleQuotationMark]]; // Replace dumb double quotes.
+    }
+
+    NSInteger charactersChanged = 0;
+    for (NSTextCheckingResult *tripleDotResult in correctionTextCheckingResults[KKEllipsisCorrections]) {
 
         // Because we're actually mutating the string we used to find the ranges, we need to make sure that the ranges we use accumulate/are concious of the new positions.
-        [grammaticallyPolishedString replaceCharactersInRange:NSMakeRange(tripleDotResult.range.location - charactersChanged, tripleDotResult.range.length) withString:KKCharacterEllipsis];
+        [string replaceCharactersInRange:NSMakeRange(tripleDotResult.range.location - charactersChanged, tripleDotResult.range.length) withString:KKCharacterEllipsis];
 
         // Increment! (... -> …)
         charactersChanged += tripleDotResult.range.length - KKCharacterEllipsis.length;
     }
 
-    // Em dashes.
-    NSRegularExpression *emDashExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEmDashExpression options:0 error:nil];
-
-    for (NSTextCheckingResult *hyphenResult in [emDashExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.KK_endToEndRange]) {
-        [grammaticallyPolishedString replaceCharactersInRange:hyphenResult.range withString:KKCharacterEmDash];
+    for (NSTextCheckingResult *hyphenResult in correctionTextCheckingResults[KKEmDashCorrections]) {
+        [string replaceCharactersInRange:hyphenResult.range withString:KKCharacterEmDash];
     }
 
-    // En dashes.
-    NSRegularExpression *enDashExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishEnDashExpression options:0 error:nil];
-
-    charactersChanged = 0;
-    for (NSTextCheckingResult *hyphenResult in [enDashExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.KK_endToEndRange]) {
-        [grammaticallyPolishedString replaceCharactersInRange:NSMakeRange(hyphenResult.range.location - charactersChanged, hyphenResult.range.length) withString:KKCharacterEnDash];
+    for (NSTextCheckingResult *hyphenResult in correctionTextCheckingResults[KKEnDashCorrections]) {
+        [string replaceCharactersInRange:NSMakeRange(hyphenResult.range.location - charactersChanged, hyphenResult.range.length) withString:KKCharacterEnDash];
         charactersChanged += hyphenResult.range.length - KKCharacterEnDash.length;
     }
-    
-    // Apostrophes.
-    NSRegularExpression *apostropheExpression = [[NSRegularExpression alloc] initWithPattern:KKPolishApostropheExpression options:0 error:nil];
 
-    for (NSTextCheckingResult *singleQuoteResult in [apostropheExpression matchesInString:grammaticallyPolishedString options:0 range:grammaticallyPolishedString.KK_endToEndRange]) {
-        [grammaticallyPolishedString replaceCharactersInRange:singleQuoteResult.range withString:KKCharacterApostrophe];
+    for (NSTextCheckingResult *singleQuoteResult in correctionTextCheckingResults[KKApostropheCorrections]) {
+        [string replaceCharactersInRange:singleQuoteResult.range withString:KKCharacterApostrophe];
     }
 
-    return [[NSString alloc] initWithString:grammaticallyPolishedString];
+    return [[NSString alloc] initWithString:string];
 }
 
 #pragma mark - Convenience Methods
