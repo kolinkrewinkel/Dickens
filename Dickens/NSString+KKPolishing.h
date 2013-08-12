@@ -14,6 +14,8 @@ extern NSString *const KKCharacterRightDoubleQuotationMark;
 extern NSString *const KKCharacterLeftSingleQuotationMark;
 extern NSString *const KKCharacterRightSingleQuotationMark;
 
+extern NSString *const KKCharacterEllipsis;
+
 extern NSString *const KKCharacterEmDash;
 extern NSString *const KKCharacterEnDash;
 
@@ -42,7 +44,7 @@ extern NSString *const KKApostropheCorrections;
 - (NSDictionary *)KK_correctionTextCheckingResults;
 
 // Takes the body and encloses it with the opening and closing string. Helpful with quotes.
-- (NSString *)KK_wrapString:(NSString *)bodyString withOpeningString:(NSString *)openingString closingString:(NSString *)closingString;
++ (NSString *)KK_wrapString:(NSString *)bodyString withOpeningString:(NSString *)openingString closingString:(NSString *)closingString;
 
 #pragma mark - Helpers
 

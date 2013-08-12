@@ -40,6 +40,16 @@ NSString *const KKPolishEnDashExpression = @"(?<=\\w )-(?= \\w)|(?<=[0-9])-(?=[0
 NSString *const KKCharacterApostrophe = @"\u02bc";
 NSString *const KKPolishApostropheExpression = @"(?<=\\w)'(?=\\w )";
 
+#pragma mark - Dictionary Constants
+
+NSString *const KKOperatedString = @"KKOperatedString";
+NSString *const KKSingleQuoteCorrections = @"KKSingleQuoteCorrections";
+NSString *const KKDoubleQuoteCorrections = @"KKDoubleQuoteCorrections";
+NSString *const KKEllipsisCorrections = @"KKEllipsisCorrections";
+NSString *const KKEmDashCorrections = @"KKEmDashCorrections";
+NSString *const KKEnDashCorrections = @"KKEnDashCorrections";
+NSString *const KKApostropheCorrections = @"KKApostropheCorrections";
+
 #pragma mark - Implementation
 
 @implementation NSString (KKPolishing)
@@ -133,12 +143,12 @@ NSString *const KKPolishApostropheExpression = @"(?<=\\w)'(?=\\w )";
 
     for (NSTextCheckingResult *quoteResult in correctionTextCheckingResults[KKSingleQuoteCorrections]) {
         NSString *content = [string substringWithRange:NSMakeRange(quoteResult.range.location + 1, quoteResult.range.length - 2)]; // Quoted content
-        [string replaceCharactersInRange:quoteResult.range withString:[self KK_wrapString:content withOpeningString:KKCharacterLeftSingleQuotationMark closingString:KKCharacterRightSingleQuotationMark]]; // Replace dumb single quotes.
+        [string replaceCharactersInRange:quoteResult.range withString:[NSString KK_wrapString:content withOpeningString:KKCharacterLeftSingleQuotationMark closingString:KKCharacterRightSingleQuotationMark]]; // Replace dumb single quotes.
     }
 
     for (NSTextCheckingResult *quoteResult in correctionTextCheckingResults[KKDoubleQuoteCorrections]) {
         NSString *content = [string substringWithRange:NSMakeRange(quoteResult.range.location + 1, quoteResult.range.length - 2)]; // Quoted content
-        [string replaceCharactersInRange:quoteResult.range withString:[self KK_wrapString:content withOpeningString:KKCharacterLeftDoubleQuotationMark closingString:KKCharacterRightDoubleQuotationMark]]; // Replace dumb double quotes.
+        [string replaceCharactersInRange:quoteResult.range withString:[NSString KK_wrapString:content withOpeningString:KKCharacterLeftDoubleQuotationMark closingString:KKCharacterRightDoubleQuotationMark]]; // Replace dumb double quotes.
     }
 
     NSInteger charactersChanged = 0;
@@ -169,7 +179,7 @@ NSString *const KKPolishApostropheExpression = @"(?<=\\w)'(?=\\w )";
 
 #pragma mark - Convenience Methods
 
-- (NSString *)KK_wrapString:(NSString *)bodyString withOpeningString:(NSString *)openingString closingString:(NSString *)closingString
++ (NSString *)KK_wrapString:(NSString *)bodyString withOpeningString:(NSString *)openingString closingString:(NSString *)closingString
 {
     return [[NSString alloc] initWithFormat:@"%@%@%@", openingString, bodyString, closingString];
 }
